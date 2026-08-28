@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>João Tardin | Marketing Technology</title>
-<meta name="description" content="João Tardin | Marketing Technology & IA aplicada a produto. São Paulo, Brasil.">
+<meta name="description" id="meta-description" content="João Tardin | Marketing Technology & IA aplicada a produto. São Paulo, Brasil.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,6 +77,12 @@
     .logo-tagline{animation:none; color:var(--text-dim); background:none;}
   }
 
+  .sidebar-top{display:flex; flex-direction:column;}
+  .lang-toggle{display:inline-flex; align-self:flex-start; border:1px solid var(--border); border-radius:999px; padding:3px; gap:2px; margin-top:18px;}
+  .lang-btn{padding:5px 13px; border-radius:999px; font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:.03em; color:var(--text-dim); background:transparent; border:none; cursor:pointer; transition:background .18s ease, color .18s ease;}
+  .lang-btn:hover{color:var(--text);}
+  .lang-btn.active{background:var(--accent); color:#fff;}
+
   .sidebar-footer{margin-top:auto; display:flex; flex-direction:column; align-items:center; gap:18px;}
   .sidebar-brand{display:block;}
   .sidebar-brand img{height:28px; width:auto; display:block; opacity:.92; transition:opacity .18s ease;}
@@ -139,6 +145,8 @@
   .hero{min-height:88vh; display:flex; flex-direction:column; justify-content:center; position:relative;}
   .hero-name-row{display:flex; align-items:center; gap:28px; flex-wrap:wrap;}
   .hero h1{font-size:clamp(38px,6vw,72px); font-weight:800; line-height:1.05; max-width:16ch;}
+  .hero-photo{width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid var(--border); flex-shrink:0;}
+  @media (max-width:760px){ .hero-photo{width:90px; height:90px;} }
   .hero h1 .accent{color:var(--accent);}
 
   .typed-caret{
@@ -277,24 +285,30 @@
 <div class="shell">
 
 <aside class="sidebar">
-  <div class="logo">João <span>Tardin</span></div>
-  <div class="logo-tagline">Marketing Technology &amp; IA Builder</div>
+  <div class="sidebar-top">
+    <div class="logo">João <span>Tardin</span></div>
+    <div class="logo-tagline" data-i18n="tagline">Marketing Technology &amp; IA Builder</div>
+    <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+      <button type="button" class="lang-btn active" data-lang="pt">PT</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
   <nav class="side-nav" id="side-nav">
     <a href="#inicio" class="side-link active">
       <svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
-      Home
+      <span data-i18n="navHome">Início</span>
     </a>
     <a href="#sobre" class="side-link">
       <svg class="icon" viewBox="0 0 24 24"><path d="M12 3 21 12 12 21 3 12Z"/></svg>
-      About
+      <span data-i18n="navAbout">Sobre</span>
     </a>
     <a href="#projetos" class="side-link">
       <svg class="icon" viewBox="0 0 24 24"><path d="M12 3 20 7.5V16.5L12 21 4 16.5V7.5Z"/></svg>
-      Projects
+      <span data-i18n="navProjects">Projetos</span>
     </a>
     <a href="#servicos" class="side-link">
       <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>
-      Services
+      <span data-i18n="navServices">Serviços</span>
     </a>
     <a href="#skills" class="side-link">
       <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg>
@@ -302,7 +316,7 @@
     </a>
     <a href="#contato" class="side-link">
       <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
-      Contact
+      <span data-i18n="navContact">Contato</span>
     </a>
   </nav>
 
@@ -331,80 +345,81 @@
 <main>
 
   <section class="hero" id="inicio">
-    <div class="eyebrow">Bem-vindo ao meu portfólio</div>
+    <div class="eyebrow" data-i18n="heroEyebrow">Bem-vindo ao meu portfólio</div>
     <div class="hero-name-row">
       <h1><span class="accent sweep-text" id="typed-name" data-text="João Tardin"><span class="typed-text"></span><span class="typed-caret"></span></span></h1>
+      <img class="hero-photo" src="assets/FOTOOO.png" alt="Foto de João Tardin" onerror="this.style.display='none'">
     </div>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="heroSub">
       <b>Marketing Technology</b> &amp; <b>IA Builder</b> em São Paulo, Brasil
     </p>
     <div class="hero-cta">
-      <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
-      <a href="#contato" class="btn btn-ghost">Entrar em Contato</a>
+      <a href="#projetos" class="btn btn-primary" data-i18n="heroBtnProjects">Ver Projetos</a>
+      <a href="#contato" class="btn btn-ghost" data-i18n="heroBtnContact">Entrar em Contato</a>
     </div>
   </section>
 
   <section id="sobre">
-    <div class="eyebrow">Sobre mim</div>
-    <h2>Um pouco da minha trajetória</h2>
+    <div class="eyebrow" data-i18n="aboutEyebrow">Sobre mim</div>
+    <h2 data-i18n="aboutTitle">Um pouco da minha trajetória</h2>
 
     <div class="company-badge">
       <div class="company-badge-logo">dgr</div>
       <div>
         <div class="company-badge-name">Grupo Dreamers</div>
-        <div class="company-badge-meta">2 anos · São Paulo, Brasil</div>
+        <div class="company-badge-meta" data-i18n="aboutBadgeMeta">2 anos · São Paulo, Brasil</div>
       </div>
     </div>
 
     <div class="sobre-grid">
       <div class="sobre-text reveal">
-        <p>Atualmente atuo como <b>Analista de Suporte Jr.</b> no Grupo Dreamers, com experiência em suporte técnico, infraestrutura e otimização de processos corporativos. Tenho interesse em Marketing Digital, UX e tecnologia aplicada à experiência do usuário, e busco sempre unir essas frentes com criatividade, análise e inovação no desenvolvimento de projetos e soluções digitais.</p>
-        <p>Faço parte do <b>Projeto Aurora</b>, migração do ecossistema Microsoft para o Google Workspace Enterprise, conduzindo a transição de mais de 800 colaboradores para as novas ferramentas.</p>
-        <p>Sou estudante de <b>Marketing no Senac São Paulo</b> e possuo certificações do Google em Foundations of Digital Marketing and E-commerce e Introduction to AI, além de formação complementar em Inteligência Artificial para Estudantes pelo LinkedIn Learning. Também utilizo ferramentas de IA generativa como Claude e Google Gemini para produtividade, automação e apoio estratégico em fluxos digitais, buscando oportunidades que conectem marketing, tecnologia e experiência digital.</p>
+        <p data-i18n="aboutP1">Atualmente atuo como <b>Analista de Suporte Jr.</b> no Grupo Dreamers, com experiência em suporte técnico, infraestrutura e otimização de processos corporativos. Tenho interesse em Marketing Digital, UX e tecnologia aplicada à experiência do usuário, e busco sempre unir essas frentes com criatividade, análise e inovação no desenvolvimento de projetos e soluções digitais.</p>
+        <p data-i18n="aboutP2">Faço parte do <b>Projeto Aurora</b>, migração do ecossistema Microsoft para o Google Workspace Enterprise, conduzindo a transição de mais de 800 colaboradores para as novas ferramentas.</p>
+        <p data-i18n="aboutP3">Sou estudante de <b>Marketing no Senac São Paulo</b> e possuo certificações do Google em Foundations of Digital Marketing and E-commerce e Introduction to AI, além de formação complementar em Inteligência Artificial para Estudantes pelo LinkedIn Learning. Também utilizo ferramentas de IA generativa como Claude e Google Gemini para produtividade, automação e apoio estratégico em fluxos digitais, buscando oportunidades que conectem marketing, tecnologia e experiência digital.</p>
       </div>
 
       <div class="stat-grid reveal">
-        <div class="stat-card"><div class="num">2+</div><div class="label">anos em IT corporativa</div></div>
-        <div class="stat-card"><div class="num">800+</div><div class="label">colaboradores migrados no Projeto Aurora</div></div>
-        <div class="stat-card"><div class="num">3</div><div class="label">certificações Google &amp; LinkedIn Learning</div></div>
-        <div class="stat-card"><div class="num">2027</div><div class="label">conclusão do Tecnólogo em Marketing</div></div>
+        <div class="stat-card"><div class="num">2+</div><div class="label" data-i18n="statLabel1">anos em IT corporativa</div></div>
+        <div class="stat-card"><div class="num">800+</div><div class="label" data-i18n="statLabel2">colaboradores migrados no Projeto Aurora</div></div>
+        <div class="stat-card"><div class="num">3</div><div class="label" data-i18n="statLabel3">certificações Google &amp; LinkedIn Learning</div></div>
+        <div class="stat-card"><div class="num">2027</div><div class="label" data-i18n="statLabel4">conclusão do Tecnólogo em Marketing</div></div>
       </div>
     </div>
   </section>
 
   <section id="projetos">
-    <div class="eyebrow">O que eu construí</div>
-    <h2>Projetos</h2>
-    <p class="section-intro">Projetos que nasceram de problemas reais — meus e de quem está por perto — construídos com apoio de IA generativa do zero ao ar.</p>
+    <div class="eyebrow" data-i18n="projectsEyebrow">O que eu construí</div>
+    <h2 data-i18n="projectsTitle">Projetos</h2>
+    <p class="section-intro" data-i18n="projectsIntro">Projetos que nasceram de problemas reais — meus e de quem está por perto — construídos com apoio de IA generativa do zero ao ar.</p>
 
     <div class="project-grid">
       <div class="project-card reveal">
-        <img src="assets/tarflow-preview.jpg" alt="Tela inicial do app Tarflow" class="project-image">
+        <img src="assets/tarflow-preview.jpg" alt="Tela inicial do app Tarflow" data-i18n-alt="tarflowImgAlt" class="project-image">
         <h3 class="sweep-text">Tarflow</h3>
-        <p class="project-tagline">Uma tentativa de transformar minha própria relação com dinheiro em produto.</p>
-        <p>Um dos meus primeiros projetos: mais do que um app web, foi uma tentativa real de organizar minhas próprias finanças e transformar esse aprendizado em produto, construído do zero com Google AI Studio e IA generativa. Descontinuado como produto, deu origem à identidade visual do Tardin Invest.</p>
+        <p class="project-tagline" data-i18n="tarflowTagline">Uma tentativa de transformar minha própria relação com dinheiro em produto.</p>
+        <p data-i18n="tarflowDesc">Um dos meus primeiros projetos: mais do que um app web, foi uma tentativa real de organizar minhas próprias finanças e transformar esse aprendizado em produto, construído do zero com Google AI Studio e IA generativa. Descontinuado como produto, deu origem à identidade visual do Tardin Invest.</p>
         <div class="tag-row">
-          <span class="tag">IA Generativa</span>
+          <span class="tag" data-i18n="tagGenAI">IA Generativa</span>
           <span class="tag">UX/UI</span>
-          <span class="tag">Finanças Pessoais</span>
+          <span class="tag" data-i18n="tagPersonalFinance">Finanças Pessoais</span>
           <span class="tag">Google AI Studio</span>
         </div>
-        <a href="https://tardin2005-netizen.github.io/Tarflow/" target="_blank" rel="noopener" class="project-link">Acessar o Tarflow →</a>
+        <a href="https://tardin2005-netizen.github.io/Tarflow/" target="_blank" rel="noopener" class="project-link" data-i18n="tarflowLink">Acessar o Tarflow →</a>
       </div>
       <div class="project-card reveal">
         <video id="tardin-invest-video" src="assets/tardin-invest-logo.mp4" class="project-image" autoplay loop muted playsinline preload="auto"></video>
         <h3 class="sweep-text">Tardin Invest</h3>
-        <p>Projeto pessoal de educação financeira no YouTube e Instagram, com a série "Do Zero à Aposentadoria" acompanhando uma jornada de construção de patrimônio desde o básico. Nasceu depois que o Tarflow foi descontinuado, reaproveitando a identidade visual em navy, preto e ciano.</p>
+        <p data-i18n="investDesc">Projeto pessoal de educação financeira no YouTube e Instagram, com a série "Do Zero à Aposentadoria" acompanhando uma jornada de construção de patrimônio desde o básico. Nasceu depois que o Tarflow foi descontinuado, reaproveitando a identidade visual em navy, preto e ciano.</p>
         <div class="tag-row">
-          <span class="tag">Educação Financeira</span>
-          <span class="tag">Conteúdo</span>
-          <span class="tag">Identidade Visual</span>
+          <span class="tag" data-i18n="tagFinEdu">Educação Financeira</span>
+          <span class="tag" data-i18n="tagContent">Conteúdo</span>
+          <span class="tag" data-i18n="tagVisualId">Identidade Visual</span>
         </div>
         <a href="https://linktr.ee/Tardin_Invest" target="_blank" rel="noopener" class="project-link">linktr.ee/Tardin_Invest →</a>
       </div>
       <div class="project-card reveal">
-        <h3>[Nome do Projeto 3]</h3>
-        <p>[Descrição curta: o que é, qual problema resolve, seu papel nele.]</p>
+        <h3 data-i18n="project3Name">[Nome do Projeto 3]</h3>
+        <p data-i18n="project3Desc">[Descrição curta: o que é, qual problema resolve, seu papel nele.]</p>
         <div class="tag-row">
           <span class="tag">[tag]</span>
           <span class="tag">[tag]</span>
@@ -414,67 +429,67 @@
   </section>
 
   <section id="servicos">
-    <div class="eyebrow">O que eu faço</div>
-    <h2>Serviços</h2>
-    <p class="section-intro">Frentes onde posso ajudar diretamente, unindo marketing, produto e IA aplicada aos negócios.</p>
+    <div class="eyebrow" data-i18n="servicesEyebrow">O que eu faço</div>
+    <h2 data-i18n="servicesTitle">Serviços</h2>
+    <p class="section-intro" data-i18n="servicesIntro">Frentes onde posso ajudar diretamente, unindo marketing, produto e IA aplicada aos negócios.</p>
 
     <div class="service-grid">
       <div class="service-card reveal">
         <h3 class="sweep-text">Websites &amp; Landing Pages</h3>
         <div class="service-image-wrap js-lightbox-trigger">
-          <img src="assets/tarflow-service-preview.png" alt="Preview do Tarflow, exemplo de site construído com IA" class="service-image">
+          <img src="assets/tarflow-service-preview.png" alt="Preview do Tarflow, exemplo de site construído com IA" data-i18n-alt="tarflowServiceImgAlt" class="service-image">
           <span class="service-image-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M9 11h4M11 9v4"/></svg></span>
         </div>
-        <p class="service-tagline">Não penso apenas em páginas. Penso na experiência que acontece entre o primeiro clique e a conversão.</p>
-        <p>Desenvolvimento de websites, landing pages e interfaces digitais com apoio de IA, unindo UX/UI, estratégia e tecnologia para criar experiências que comunicam, envolvem e geram ação.</p>
+        <p class="service-tagline" data-i18n="service1Tagline">Não penso apenas em páginas. Penso na experiência que acontece entre o primeiro clique e a conversão.</p>
+        <p data-i18n="service1Desc">Desenvolvimento de websites, landing pages e interfaces digitais com apoio de IA, unindo UX/UI, estratégia e tecnologia para criar experiências que comunicam, envolvem e geram ação.</p>
         <ul class="service-list">
-          <li>UX/UI e experiência do usuário</li>
-          <li>Websites e landing pages orientados à conversão</li>
-          <li>IA aplicada ao processo de criação</li>
+          <li data-i18n="service1Li1">UX/UI e experiência do usuário</li>
+          <li data-i18n="service1Li2">Websites e landing pages orientados à conversão</li>
+          <li data-i18n="service1Li3">IA aplicada ao processo de criação</li>
         </ul>
       </div>
       <div class="service-card reveal">
-        <h3 class="sweep-text">Experiência Digital &amp; Conversão</h3>
+        <h3 class="sweep-text" data-i18n="service2Title">Experiência Digital &amp; Conversão</h3>
         <div class="service-image-wrap js-lightbox-trigger">
-          <img src="assets/tardin-caldos-preview.png" alt="Landing page do Tardin Caldos, projeto de conversão via WhatsApp" class="service-image">
+          <img src="assets/tardin-caldos-preview.png" alt="Landing page do Tardin Caldos, projeto de conversão via WhatsApp" data-i18n-alt="caldosImgAlt" class="service-image">
           <span class="service-image-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M9 11h4M11 9v4"/></svg></span>
         </div>
-        <p class="service-tagline">Peguei um negócio familiar e transformei seu catálogo de caldos em uma experiência digital pensada para vender.</p>
-        <p>A ideia foi simplificar a escolha, apresentar os produtos de forma mais atrativa e reduzir o caminho entre conhecer o produto e fazer o pedido.</p>
+        <p class="service-tagline" data-i18n="service2Tagline">Peguei um negócio familiar e transformei seu catálogo de caldos em uma experiência digital pensada para vender.</p>
+        <p data-i18n="service2Desc">A ideia foi simplificar a escolha, apresentar os produtos de forma mais atrativa e reduzir o caminho entre conhecer o produto e fazer o pedido.</p>
         <ul class="service-list">
-          <li>Catálogo digital interativo</li>
-          <li>Conversão direta pelo WhatsApp</li>
-          <li>Interface pensada para facilitar a decisão</li>
+          <li data-i18n="service2Li1">Catálogo digital interativo</li>
+          <li data-i18n="service2Li2">Conversão direta pelo WhatsApp</li>
+          <li data-i18n="service2Li3">Interface pensada para facilitar a decisão</li>
         </ul>
       </div>
       <div class="service-card reveal">
         <div class="service-icon icon-teal">🤖</div>
-        <h3>IA &amp; Soluções Sob Medida</h3>
-        <p>Desenvolvimento de agentes inteligentes, automações avançadas e um amplo leque de soluções pra resolver desafios específicos de cada projeto.</p>
+        <h3 data-i18n="service3Title">IA &amp; Soluções Sob Medida</h3>
+        <p data-i18n="service3Desc">Desenvolvimento de agentes inteligentes, automações avançadas e um amplo leque de soluções pra resolver desafios específicos de cada projeto.</p>
         <ul class="service-list">
-          <li>Agentes Personalizados &amp; IA Aplicada</li>
-          <li>Soluções Digitais sob Medida</li>
+          <li data-i18n="service3Li1">Agentes Personalizados &amp; IA Aplicada</li>
+          <li data-i18n="service3Li2">Soluções Digitais sob Medida</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="skills">
-    <div class="eyebrow">Ferramentas & conhecimento</div>
+    <div class="eyebrow" data-i18n="skillsEyebrow">Ferramentas & conhecimento</div>
     <h2>Skills</h2>
 
     <div class="skill-grid">
       <div class="skill-card reveal">
         <div class="skill-cat">Marketing</div>
         <div class="skill-pills">
-          <span class="skill-pill">Marketing Digital</span>
+          <span class="skill-pill" data-i18n="skillDigitalMkt">Marketing Digital</span>
           <span class="skill-pill">E-commerce</span>
-          <span class="skill-pill">Planejamento</span>
-          <span class="skill-pill">Conteúdo</span>
+          <span class="skill-pill" data-i18n="skillPlanning">Planejamento</span>
+          <span class="skill-pill" data-i18n="tagContent2">Conteúdo</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-cat">Tecnologia</div>
+        <div class="skill-cat" data-i18n="skillCatTech">Tecnologia</div>
         <div class="skill-pills">
           <span class="skill-pill">Google Workspace</span>
           <span class="skill-pill">Microsoft 365</span>
@@ -483,12 +498,12 @@
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-cat">Produto</div>
+        <div class="skill-cat" data-i18n="skillCatProduct">Produto</div>
         <div class="skill-pills">
           <span class="skill-pill">UX/UI</span>
-          <span class="skill-pill">IA Generativa</span>
-          <span class="skill-pill">Prototipação</span>
-          <span class="skill-pill">Experiência Digital</span>
+          <span class="skill-pill" data-i18n="tagGenAI2">IA Generativa</span>
+          <span class="skill-pill" data-i18n="skillPrototyping">Prototipação</span>
+          <span class="skill-pill" data-i18n="skillDigitalExp">Experiência Digital</span>
         </div>
       </div>
     </div>
@@ -496,9 +511,9 @@
 
   <section id="contato">
     <div class="contato-inner">
-      <div class="eyebrow">Vamos conversar</div>
-      <h2>Aberto a novas oportunidades</h2>
-      <p class="lead">Buscando posições em Marketing Digital, MarTech, UX/UI ou projetos que envolvam IA generativa aplicada a produto. Entre em contato!</p>
+      <div class="eyebrow" data-i18n="contactEyebrow">Vamos conversar</div>
+      <h2 data-i18n="contactTitle">Aberto a novas oportunidades</h2>
+      <p class="lead" data-i18n="contactLead">Buscando posições em Marketing Digital, MarTech, UX/UI ou projetos que envolvam IA generativa aplicada a produto. Entre em contato!</p>
 
       <div class="contact-list">
         <a href="mailto:tardin2005@gmail.com" class="contact-pill">✉ tardin2005@gmail.com</a>
@@ -579,6 +594,137 @@
     document.addEventListener('click', tryPlay, { once: true });
     document.addEventListener('scroll', tryPlay, { once: true, passive: true });
   }
+
+  // ---- i18n (PT-BR / EN) ----
+  const translations = {
+    tagline: { en: "Marketing Technology &amp; AI Builder" },
+    navHome: { en: "Home" },
+    navAbout: { en: "About" },
+    navProjects: { en: "Projects" },
+    navServices: { en: "Services" },
+    navContact: { en: "Contact" },
+
+    heroEyebrow: { en: "Welcome to my portfolio" },
+    heroSub: { en: '<b>Marketing Technology</b> &amp; <b>AI Builder</b> in São Paulo, Brazil' },
+    heroBtnProjects: { en: "View Projects" },
+    heroBtnContact: { en: "Get in Touch" },
+
+    aboutEyebrow: { en: "About me" },
+    aboutTitle: { en: "A bit about my journey" },
+    aboutBadgeMeta: { en: "2 years · São Paulo, Brazil" },
+    aboutP1: { en: 'Currently I work as a <b>Jr. Support Analyst</b> at Grupo Dreamers, with experience in technical support, infrastructure and corporate process optimization. I have an interest in Digital Marketing, UX and technology applied to user experience, and I always look to combine these fronts with creativity, analysis and innovation in the development of digital projects and solutions.' },
+    aboutP2: { en: 'I\'m part of <b>Project Aurora</b>, the migration from the Microsoft ecosystem to Google Workspace Enterprise, leading the transition of more than 800 employees to the new tools.' },
+    aboutP3: { en: 'I\'m a <b>Marketing student at Senac São Paulo</b> and hold Google certifications in Foundations of Digital Marketing and E-commerce and Introduction to AI, plus complementary training in Artificial Intelligence for Students from LinkedIn Learning. I also use generative AI tools like Claude and Google Gemini for productivity, automation and strategic support across digital workflows, and I\'m looking for opportunities that connect marketing, technology and digital experience.' },
+    statLabel1: { en: "years in corporate IT" },
+    statLabel2: { en: "employees migrated in Project Aurora" },
+    statLabel3: { en: "Google &amp; LinkedIn Learning certifications" },
+    statLabel4: { en: "Marketing degree completion" },
+
+    projectsEyebrow: { en: "What I've built" },
+    projectsTitle: { en: "Projects" },
+    projectsIntro: { en: "Projects born from real problems — mine and the people around me — built with the support of generative AI from zero to live." },
+    tarflowImgAlt: { pt: "Tela inicial do app Tarflow", en: "Tarflow app home screen" },
+    tarflowTagline: { en: "An attempt to turn my own relationship with money into a product." },
+    tarflowDesc: { en: "One of my first projects: more than a web app, it was a real attempt to organize my own finances and turn that learning into a product, built from scratch with Google AI Studio and generative AI. Discontinued as a product, it gave rise to the Tardin Invest visual identity." },
+    tagGenAI: { en: "Generative AI" },
+    tagPersonalFinance: { en: "Personal Finance" },
+    tarflowLink: { en: "Visit Tarflow →" },
+    investDesc: { en: 'Personal financial education project on YouTube and Instagram, with the series "From Zero to Retirement" following a wealth-building journey from the basics. Born after Tarflow was discontinued, reusing the navy, black and cyan visual identity.' },
+    tagFinEdu: { en: "Financial Education" },
+    tagContent: { en: "Content" },
+    tagVisualId: { en: "Visual Identity" },
+    project3Name: { en: "[Project 3 Name]" },
+    project3Desc: { en: "[Short description: what it is, what problem it solves, your role in it.]" },
+
+    servicesEyebrow: { en: "What I do" },
+    servicesTitle: { en: "Services" },
+    servicesIntro: { en: "Areas where I can help directly, combining marketing, product and AI applied to business." },
+    tarflowServiceImgAlt: { pt: "Preview do Tarflow, exemplo de site construído com IA", en: "Tarflow preview, an example of a site built with AI" },
+    service1Tagline: { en: "I don't just think about pages. I think about the experience that happens between the first click and the conversion." },
+    service1Desc: { en: "Development of websites, landing pages and digital interfaces with AI support, combining UX/UI, strategy and technology to create experiences that communicate, engage and drive action." },
+    service1Li1: { en: "UX/UI and user experience" },
+    service1Li2: { en: "Conversion-oriented websites and landing pages" },
+    service1Li3: { en: "AI applied to the creation process" },
+    service2Title: { en: "Digital Experience &amp; Conversion" },
+    caldosImgAlt: { pt: "Landing page do Tardin Caldos, projeto de conversão via WhatsApp", en: "Tardin Caldos landing page, a WhatsApp conversion project" },
+    service2Tagline: { en: "I took a family business and turned its soup catalog into a digital experience built to sell." },
+    service2Desc: { en: "The idea was to simplify the choice, present the products more attractively and shorten the path between discovering the product and placing the order." },
+    service2Li1: { en: "Interactive digital catalog" },
+    service2Li2: { en: "Direct conversion via WhatsApp" },
+    service2Li3: { en: "Interface designed to ease decision-making" },
+    service3Title: { en: "AI &amp; Custom Solutions" },
+    service3Desc: { en: "Development of intelligent agents, advanced automations and a wide range of solutions to solve each project's specific challenges." },
+    service3Li1: { en: "Custom Agents &amp; Applied AI" },
+    service3Li2: { en: "Tailor-made Digital Solutions" },
+
+    skillsEyebrow: { en: "Tools &amp; knowledge" },
+    skillDigitalMkt: { en: "Digital Marketing" },
+    skillPlanning: { en: "Planning" },
+    tagContent2: { en: "Content" },
+    skillCatTech: { en: "Technology" },
+    skillCatProduct: { en: "Product" },
+    tagGenAI2: { en: "Generative AI" },
+    skillPrototyping: { en: "Prototyping" },
+    skillDigitalExp: { en: "Digital Experience" },
+
+    contactEyebrow: { en: "Let's talk" },
+    contactTitle: { en: "Open to new opportunities" },
+    contactLead: { en: "Looking for positions in Digital Marketing, MarTech, UX/UI or projects involving generative AI applied to product. Get in touch!" }
+  };
+
+  const metaDescriptions = {
+    pt: "João Tardin | Marketing Technology & IA aplicada a produto. São Paulo, Brasil.",
+    en: "João Tardin | Marketing Technology & AI applied to product. São Paulo, Brazil."
+  };
+
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  const originalPT = new Map();
+  i18nEls.forEach(el => originalPT.set(el, el.innerHTML));
+
+  const altEls = document.querySelectorAll('[data-i18n-alt]');
+  const originalAltPT = new Map();
+  altEls.forEach(el => originalAltPT.set(el, el.getAttribute('alt')));
+
+  function setLang(lang){
+    document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+
+    i18nEls.forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      const entry = translations[key];
+      if(lang === 'en' && entry && entry.en){
+        el.innerHTML = entry.en;
+      } else {
+        el.innerHTML = originalPT.get(el);
+      }
+    });
+
+    altEls.forEach(el=>{
+      const key = el.getAttribute('data-i18n-alt');
+      const entry = translations[key];
+      if(lang === 'en' && entry && entry.en){
+        el.setAttribute('alt', entry.en);
+      } else {
+        el.setAttribute('alt', originalAltPT.get(el));
+      }
+    });
+
+    const metaDesc = document.getElementById('meta-description');
+    if(metaDesc) metaDesc.setAttribute('content', metaDescriptions[lang] || metaDescriptions.pt);
+
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    try { localStorage.setItem('siteLang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+  });
+
+  let initialLang = 'pt';
+  try { initialLang = localStorage.getItem('siteLang') || 'pt'; } catch(e) {}
+  setLang(initialLang);
 </script>
 </body>
 </html>
